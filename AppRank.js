@@ -18,11 +18,11 @@ function main() {
         return;
     };
     alert("开始执行任务了，请不要随意切换应用");
-    AppStore();
+    AppRank();
     alert("已执行完成！");
 }
 
-function AppStore() {
+function AppRank() {
     toast("应用宝");
     if (app.launchPackage("com.tencent.android.qqdownloader")) {
         sleep(2000);
@@ -35,4 +35,8 @@ function AppStore() {
     }
     toast("开始下一个，等待3秒钟");
     sleep(3000);
+}
+
+function YingYongBao(){
+    
 }

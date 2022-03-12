@@ -1,7 +1,7 @@
 "ui";
 ui.layout(
     <vertical >
-        <text marginTop="200" layout_gravity="center">功能依赖于无障碍，使用前请先点击“打开无障碍”，打开无障碍后返回软件，点击开始执行，开始签到！软件是用autojs打包的，可能部分手机管家会报毒！不会使用的加群</text>
+        <text marginTop="200" layout_gravity="center">功能依赖于无障碍</text>
         <button marginTop="50" id="addGroup" layout_gravity="center" text="加qq群" />
         <button id="on" layout_gravity="center" text="打开无障碍" />
         <button id="start" layout_gravity="center" text="开始签到" />

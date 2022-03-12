@@ -1,6 +1,7 @@
 "ui";
 ui.layout(
     <vertical >
+        <button id="on" layout_gravity="center" text="打开无障碍" />
         <button id="start" layout_gravity="center" text="开始" />
  </vertical>
 
@@ -21,8 +22,6 @@ ui.start.click(function() {
 function main() {
     toast("等待3秒钟");
     sleep(3000);
-    alert("开始执行任务了，请不要随意切换应用");
-    sleep(2000);
     storeSign();
     communitySign();
     walletSign();
@@ -30,10 +29,10 @@ function main() {
     smarthomeSign();
     gamecenterSign();
     themestoreSign();
-    speechassistSign();
-    videoeditorSign();
+    breeenoSign();
     marketSign();
     browserSign();
+    yoliSign();
     alert("已执行完成！");
 }
 
@@ -59,7 +58,7 @@ function storeSign() {
 }
 
 function communitySign() {
-    toast("打开OPPO 社区");
+    toast("打开 OPPO 社区");
     if (app.launchPackage("com.oppo.community")) {
         sleep(4000);
         closeupdate();
@@ -205,25 +204,20 @@ function themestoreSign() {
     sleep(3000);
 }
 
-function speechassistSign() {
-    toast("打开Breeno 语音");
+function breeenoSign() {
+    toast("打开 Breeno");
     if (app.launchPackage("com.heytap.speechassist")) {
         sleep(4000);
         closeupdate();
         text("我的").waitFor();
         log("找到了");
         sleep(1000);
-        var me = text("我的").boundsInside(0, 0, device.width, device.height / 2).findOne();
+        var me = text("我的").boundsInside(0, device.height * 3 / 4, device.width, device.height).findOne().bounds();
         sleep(1000);
-        if (me.visibleToUser()) {
-            sleep(1000);
-            log(click(me.bounds().centerX(), me.bounds().centerY()));
-            sleep(1000);
-            var qd = text("签到");
-            if (qd) {
-                log("签到");
-                click(qd.findOne().bounds().centerX(), qd.findOne().bounds().centerY());
-            }
+        log(click(me.centerX(), me.centerY()));
+        sleep(1000);
+        if (text("签到").exists()) {
+            click("签到");
         }
     } else {
         toast("软件不存在，进行下一个");
@@ -235,6 +229,28 @@ function speechassistSign() {
 function marketSign() {
     toast("打开软件商店");
     if (app.launchPackage("com.heytap.market")) {
+        sleep(6000);
+        closeupdate();
+        text("我的").waitFor();
+        log("找到了");
+        sleep(1000);
+        var me = text("我的").boundsInside(0, device.height * 3 / 4, device.width, device.height).findOne().bounds();
+        sleep(1000);
+        log(click(me.centerX(), me.centerY()));
+        sleep(1000);
+        if (text("签到").exists()) {
+            click("签到");
+        }
+    } else {
+        toast("软件不存在，进行下一个");
+    }
+    toast("开始下一个，等待3秒钟");
+    sleep(3000);
+}
+
+function browserSign() {
+    toast("打开浏览器");
+    if (app.launchPackage("com.heytap.browser")) {
         sleep(6000);
         closeupdate();
         text("我的").waitFor();
@@ -259,9 +275,9 @@ function marketSign() {
     sleep(3000);
 }
 
-function browserSign() {
-    toast("打开浏览器");
-    if (app.launchPackage("com.heytap.browser")) {
+function yoliSign() {
+    toast("打开视频");
+    if (app.launchPackage("com.heytap.yoli")) {
         sleep(6000);
         closeupdate();
         text("我的").waitFor();
