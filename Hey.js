@@ -36,7 +36,6 @@ function main() {
     alert("已执行完成！");
 }
 
-//欢太商城签到
 function storeSign() {
     toast("打开OPPO商城");
     if (app.launchPackage("com.oppo.store")) {
@@ -60,7 +59,7 @@ function storeSign() {
 function communitySign() {
     toast("打开 OPPO 社区");
     if (app.launchPackage("com.oppo.community")) {
-        sleep(4000);
+        sleep(2000);
         closeupdate();
         text("我的").waitFor();
         log("找到了");
@@ -71,10 +70,6 @@ function communitySign() {
         sleep(1000);
         if (text("签到").exists()) {
             click("签到");
-            sleep(1000);
-            if (text("签到").exists()) {
-                click("签到");
-            }
         }
     } else {
         toast("软件不存在，进行下一个");
@@ -112,14 +107,18 @@ function walletSign() {
 
 function usercenterSign() {
     toast("打开我的一加");
-    if (app.launchPackage("com.oppo.usercenter")) {
+    if (app.launchPackage("com.heytap.vip")) {
         sleep(4000);
         closeupdate();
-        text("我的").waitFor();
+        text("首页").waitFor();
         log("找到了");
         sleep(1000);
         if (text("签到").exists()) {
             click("签到");
+            sleep(1000);
+            if (text("签到").exists()) {
+                click("签到");
+            }
         }
     } else {
         toast("软件不存在，进行下一个");
@@ -127,6 +126,7 @@ function usercenterSign() {
     toast("开始下一个，等待3秒钟");
     sleep(3000);
 }
+
 function smarthomeSign() {
     toast("打开智能家居");
     if (app.launchPackage("com.heytap.smarthome")) {
@@ -256,7 +256,7 @@ function browserSign() {
         text("我的").waitFor();
         log("找到了");
         sleep(1000);
-        var me = text("我的").boundsInside(0, device.height * 3 / 4, device.width, device.height).findOne();
+        var me = text("我的").boundsInside(0, device.height * 3 / 4, device.width, device.height).findOne().bounds();
         sleep(1000);
         if (me.visibleToUser()) {
             sleep(1000);
